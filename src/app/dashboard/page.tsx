@@ -10,6 +10,7 @@ import { Suspense } from 'react'
 export default async function Dashboard({
   searchParams,
 }: {
+  // ✅ This is the correct shape and typing!
   searchParams?: {
     sort?: 'date' | 'completed' | 'title'
     order?: 'asc' | 'desc'
@@ -47,9 +48,7 @@ export default async function Dashboard({
           {/* Left Column - Add Task */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6 sticky top-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                Add New Task
-              </h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Add New Task</h2>
               <AddTaskForm />
             </div>
           </div>
@@ -59,18 +58,12 @@ export default async function Dashboard({
             <div className="bg-white rounded-lg shadow-sm">
               <div className="p-6 border-b border-gray-200">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-lg font-semibold text-gray-900">
-                    Your Tasks
-                  </h2>
+                  <h2 className="text-lg font-semibold text-gray-900">Your Tasks</h2>
                   <TaskSorter currentSort={sortBy} currentOrder={order} />
                 </div>
               </div>
               <div className="p-6">
-                <Suspense
-                  fallback={
-                    <div className="text-center py-8">Loading tasks...</div>
-                  }
-                >
+                <Suspense fallback={<div className="text-center py-8">Loading tasks...</div>}>
                   <TaskList tasks={tasks} />
                 </Suspense>
               </div>
