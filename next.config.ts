@@ -1,11 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
-    serverActions: {
-      bodySizeLimit: '2mb',
-    },
+    serverActions: true,
+    serverComponentsExternalPackages: ["better-sqlite3"],
+  },
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
   },
 };
 
