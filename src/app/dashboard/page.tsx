@@ -7,8 +7,8 @@ import { TaskSorter } from '@/components/task-sorter'
 import { UserProfile } from '@/components/user-profile'
 import { Suspense } from 'react'
 
-interface DashboardProps {
-  searchParams: {
+type DashboardProps = {
+  searchParams?: {
     sort?: 'date' | 'completed' | 'title'
     order?: 'asc' | 'desc'
   }
@@ -16,15 +16,14 @@ interface DashboardProps {
 
 export default async function Dashboard({ searchParams }: DashboardProps) {
   const session = await auth()
-  
+
   if (!session) {
     redirect('/auth/signin')
   }
 
-  const sortBy = searchParams.sort || 'date'
-  const order = searchParams.order || 'desc'
-  
-  // This will be cached by Next.js and revalidated when tasks change
+  const sortBy = searchParams?.sort || 'date'
+  const order = searchParams?.order || 'desc'
+
   const tasks = await getTasks(sortBy, order)
 
   return (
