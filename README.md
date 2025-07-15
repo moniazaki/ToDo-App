@@ -58,13 +58,13 @@ cp .env.example .env
    - Copy Client ID and Secret
      
 4. Create Neon PostgreSQL Database:
-   
--Go to https://neon.tech/
--Sign up with GitHub or Google
--Click “Create Project” → Select PostgreSQL
--Once the project is created:
--Copy the connection string (e.g., postgresql://...)
--npx drizzle-kit push
+
+- Go to https://neon.tech/
+- Sign up with GitHub or Google
+- Click “Create Project” → Select PostgreSQL
+- Once the project is created:
+- Copy the connection string (e.g., postgresql://...)
+- npx drizzle-kit push
 
 5. Update `.env`:
 ```env
