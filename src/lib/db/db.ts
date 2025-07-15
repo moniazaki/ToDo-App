@@ -87,5 +87,16 @@ import * as schema from './schema'
 const client = postgres(process.env.DATABASE_URL!, { ssl: 'require' })
 export const db = drizzle(client, { schema })
 
-// (optional) quick connectivity log
-client`SELECT 1`.then(() => console.log('✅ Connected to Postgres')).catch((err) => console.error('❌ Failed to connect to Postgres:', err))
+// Initialize database function
+export async function initDb() {
+  try {
+    await client`SELECT 1`
+    console.log('✅ Connected to Postgres')
+  } catch (err) {
+    console.error('❌ Failed to connect to Postgres:', err)
+    throw err
+  }
+}
+
+// Auto-initialize on import (optional)
+initDb().catch(console.error)
