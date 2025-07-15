@@ -18,7 +18,7 @@ export function TaskSorter({ currentSort, currentOrder }: TaskSorterProps) {
     const params = new URLSearchParams(searchParams)
     params.set('sort', sort)
     
-    // If same sort, toggle order
+
     if (sort === currentSort) {
       const newOrder = currentOrder === 'asc' ? 'desc' : 'asc'
       params.set('order', newOrder)

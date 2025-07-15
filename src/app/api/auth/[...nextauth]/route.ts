@@ -1,6 +1,6 @@
 import { handlers } from '@/lib/auth'
-console.log("📢 Starting NextAuth API route...");
+console.log("Starting NextAuth API route...");
 
 export const { GET, POST } = handlers
 
-console.log("✅ NextAuth setup complete.");
+console.log("NextAuth setup complete.");

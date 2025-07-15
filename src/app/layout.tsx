@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'A full-stack todo application built with Next.js 15',
 }
 
-// Initialize database on app start properly
+
 async function initializeDatabase() {
   await initDb()
 }

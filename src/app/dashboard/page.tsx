@@ -21,7 +21,6 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
     redirect('/auth/signin')
   }
 
-  // Await the searchParams since it's now a Promise in Next.js 15
   const params = await searchParams
   const sortBy = params.sort || 'date'
   const order = params.order || 'desc'
