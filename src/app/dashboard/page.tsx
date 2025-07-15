@@ -7,14 +7,14 @@ import { TaskSorter } from '@/components/task-sorter'
 import { UserProfile } from '@/components/user-profile'
 import { Suspense } from 'react'
 
-type DashboardProps = {
+export default async function Dashboard({
+  searchParams,
+}: {
   searchParams?: {
     sort?: 'date' | 'completed' | 'title'
     order?: 'asc' | 'desc'
   }
-}
-
-export default async function Dashboard({ searchParams }: DashboardProps) {
+}) {
   const session = await auth()
 
   if (!session) {
@@ -47,7 +47,9 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
           {/* Left Column - Add Task */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6 sticky top-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Add New Task</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                Add New Task
+              </h2>
               <AddTaskForm />
             </div>
           </div>
@@ -57,12 +59,18 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
             <div className="bg-white rounded-lg shadow-sm">
               <div className="p-6 border-b border-gray-200">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-lg font-semibold text-gray-900">Your Tasks</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">
+                    Your Tasks
+                  </h2>
                   <TaskSorter currentSort={sortBy} currentOrder={order} />
                 </div>
               </div>
               <div className="p-6">
-                <Suspense fallback={<div className="text-center py-8">Loading tasks...</div>}>
+                <Suspense
+                  fallback={
+                    <div className="text-center py-8">Loading tasks...</div>
+                  }
+                >
                   <TaskList tasks={tasks} />
                 </Suspense>
               </div>
@@ -73,3 +81,4 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
     </div>
   )
 }
+
