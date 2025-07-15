@@ -12,7 +12,11 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "incremental": true
+    "incremental": true,
+     "baseUrl": ".",
+     "paths": {
+      "@/*": ["src/*"]
+    },
   },
   "include": [
     "next-env.d.ts",
